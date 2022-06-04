@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Javascript</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="">
+	<div class="wrapper">
+		<header class="header flexC">
+			<span class="flexG fontB font20">Food app</span>
+			<span class="font14 font flexC"><span class="clr-S mR8">Dark Mode</span> <input type="checkbox" id="darkmode"></span>
+		</header>
+		<section class="section flex-col">
+			<header class="fshrink card-search mT20 pLR36">
+				<div>
+					<input id="searchbox" type="text" class="input-bx" placeholder="Hotel name">
+				</div>
+				<div class="mT10 flexC">
+					<span class="fontB">Tags</span>
+					<span id="taglist" class="tag-wrap flexC"></span>
+				</div>
+			</header>
+			<section class="card-wrapper mT20 pLR36 flexG" id="cardholder"></section>
+		</section>
+	</div>
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript">
+
+		window.onload = function(){
+
+			var foodorder = new FoodOrder();  /* foodorder object creation */
+			foodorder.init();			/* Initialization */
+
+		}
+	</script>
+</body>
+</html>
