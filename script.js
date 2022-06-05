@@ -4,6 +4,8 @@ var FoodOrder = function() {
 	this.selectedtag = [];
 	this.cardholderdom = document.getElementById('cardholder');
 	this.taglistdom = document.getElementById('taglist');
+	this.darkmodecheckbox = document.getElementById('darkmode');
+	this.isdarkchoosed = false;
 }
 
 FoodOrder.prototype = {
@@ -11,7 +13,9 @@ FoodOrder.prototype = {
 	init: function(ev) {
 		this.generateCardView(this.cardholderdom, this.getData() );
 		this.renderTagView()
-		this.bindEvent(ev);	
+		this.bindEvent(ev);
+		this.isdarkchoosed = this.getLocalStorageData('darkmode');
+		this.syncDarkMode(this.isdarkchoosed, this.darkmodecheckbox)
 	},
 
 	getData: function() {
@@ -147,10 +151,26 @@ FoodOrder.prototype = {
 	  	var body = document.body;
 	  	if (checkBox.checked == true){
 	  		body.classList.add('dark')
+	  		this.updateLocalStorageData('darkmode', 1)
 	  	} else {
 	    	body.classList.remove('dark')
+	    	this.updateLocalStorageData('darkmode', 0);
 	  	}
+	},
+
+	syncDarkMode: function(isdarkchoosed, dom) {
+		if( parseInt(isdarkchoosed) )  {
+			dom.checked=true;
+			document.body.classList.add('dark');
+		}
+	},
+
+	updateLocalStorageData: function(key,value) {
+		return localStorage.setItem(key, value);
+	},
+
+	getLocalStorageData: function(key) {
+		return localStorage.getItem(key);
 	}
 
 }
-
