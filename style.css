@@ -56,6 +56,10 @@ body { background: var(--color-bg); color: var(--color-main); font-family: Lato,
 
 .mLR4 { margin: 0 4px; }
 
+/*Loader - Start*/
+.loader { display: inline-flex; width: 40px; height: 40px; border: 3px solid var(--color-secondary); border-top-color: var(--color-theme); border-radius: 100%; animation: rotate 1s linear infinite; } 
+@keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+/*Loader - End*/
 
 .header { display: flex;align-items: center;height: 50px;padding: 0 36px;background-color: var(--color-hover2); flex-shrink: 0; }
 .wrapper { display: flex;flex-direction: column;height: 100vh; overflow: hidden; }
@@ -71,10 +75,29 @@ body { background: var(--color-bg); color: var(--color-main); font-family: Lato,
 
 .card-wrapper { overflow: auto; padding-bottom: 20px; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-gap: 30px; } 
-.card { background-color: var(--color-bg2); box-shadow: 0 0 1px 1px rgba(0,0,0,0.1); border-radius: 6px;width: 300px;height: 200px; display: flex; flex-direction: column; }
-.card-img { height: 100px; background: linear-gradient(180deg, rgba(var(--color-tertiary-rgb),0.6), transparent);border-radius: inherit;}
+.card { font-size: 15px; background-color: var(--color-bg2); box-shadow: 0 0 1px 1px rgba(0,0,0,0.1); border-radius: 6px;width: 300px;height: 200px; display: flex; flex-direction: column; cursor: pointer; }
+.card-img { height: 50%; background: linear-gradient(180deg, rgba(var(--color-tertiary-rgb),0.6), transparent);border-radius: inherit;}
 .card-img img { height: 100%; }
+.card-location { font-size: 0.9em; }
 .card-rating { background-color: #F08F1E; border-radius: 3px; padding: 1px 6px; color: #fff; font-size: 12px; }
-.card-tags {background-color: rgba(var(--color-tertiary-rgb),0.1);border-radius: 0 0 6px 6px;padding: 4px 10px;font-size: 12px;}
+.card-tags {background-color: rgba(var(--color-tertiary-rgb),0.1);border-radius: 0 0 6px 6px;padding: 2% 4%;font-size: 0.86em;}
 
+/*modal css - Start*/
+.modal { position: fixed; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); left: 0; top: 0; z-index: 1; }
+.modal-main { background-color: var(--color-bg); width: 80%; max-width: 700px; height: 500px; border-radius: 6px; }
+.arrowIcon {position: absolute;width: 40px;height: 100px;background-color: rgba(255,255,255,0.3);cursor: pointer; top: 0; bottom: 0; margin: auto;transition: background .2s linear;}
+.arrowIcon:hover { background-color: rgba(255,255,255,0.5); }
+.arrowIcon:hover:after { opacity: 1; }
+.leftArrow {border-radius: 0 14px 14px 0; left:  0; }
+.rightArrow {right: 0;border-radius: 14px 0 0 14px; right: 0;}
+.arrowIcon:after { content: ""; width: 10px; height: 10px; border: 2px solid #fff; border-color: #fff #fff transparent transparent; transform: rotate(45deg); opacity: 0.6; } 
+.arrowIcon.leftArrow:after { transform: rotate(-135deg); }
+.closeIcon { position: absolute; width: 40px; height: 40px; background-color: rgba(255,255,255,0.3); cursor: pointer; top: 20px; right: 20px; border-radius: 100%; font-size: 16px; color: rgba(255,255,255,0.6); transition: background .2s linear; } 
+.closeIcon:hover { background-color: rgba(255,255,255,0.5); color: #fff; }
+
+.modal .card { width: 100%; height: 100%; font-size: 22px; }
+.modal .card-img { height: 65%; }
+.modal .card-rating { padding: 6px 14px; font-size: 14px; }
+.modal .card-content { padding: 0 30px; }
+/*modal css - End*/
 
